@@ -1,7 +1,7 @@
 a = 9
 
 if a:
-  print("yesss, a exist.")
+  print("yesss, 'a' exist.")
 else:
   print("this will not run") 
 
@@ -19,7 +19,7 @@ print(0 and 7)      # 0
 or  : hunts for first truthy value
 and : hunts for frist falsy value
 
-default ; if nothings is found return the last value
+default : if nothings is found return the last value
 
 """
 

@@ -57,5 +57,15 @@ print(len(str(2 ** 105)))
 print(len(str(2 ** 1000)))
 
 import sys
-
 print(sys.maxsize)
+
+print("=====================")
+print(True + 1)
+# print(True + '1')  # This will give TYpeError error
+
+print("="*30)
+
+print([1, 2] + [3, 4])
+print([1, 2] * 3)
+
+print("=" * 30)
