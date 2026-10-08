@@ -51,7 +51,6 @@ class NeuralNetwork:
 
         hidden1 = []
         for i in range(self.hidden1_size):
-
             total = self.bias1[i]
 
             for j in range(self.input_size):
@@ -66,7 +65,6 @@ class NeuralNetwork:
 
         hidden2 = []
         for i in range(self.hidden2_size):
-            
             total = self.bias2[i]
 
             for j in range(self.hidden1_size):
@@ -80,7 +78,6 @@ class NeuralNetwork:
 
         output = []
         for i in range(self.output_size):
-
             total = self.bias3[i]
 
             for j in range(self.hidden2_size):
@@ -92,7 +89,34 @@ class NeuralNetwork:
 
 
     def predict(self, inputs):
+        if len(inputs) == 4:
+          flat_grid = []
+          for row in inputs:
+              for value in row:
+                  flat_grid.append(value)
+          inputs = flat_grid
 
         output = self.forward(inputs)
 
         return output.index(max(output))
+
+        # output[0] → UP
+        # output[1] → DOWN
+        # output[2] → LEFT
+        # output[3] → RIGHT
+
+
+
+nn = NeuralNetwork()
+
+board = [
+    2, 0, 4, 0,
+    0, 8, 0, 0,
+    0, 0, 2, 0,
+    0, 0, 0, 4
+]
+
+output = nn.forward(board)
+
+print("Outputs:", output)
+print("Chosen move:", nn.predict(board))
