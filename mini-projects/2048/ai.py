@@ -45,6 +45,13 @@ class NeuralNetwork:
         return max(0, x)
 
     def forward(self, inputs):
+        if len(inputs) == 4:
+            flat_grid = []
+            for row in inputs:
+                for value in row:
+                    flat_grid.append(value)
+            inputs = flat_grid
+                  
         # -------------------
         # Input → Hidden 1
         # -------------------
@@ -107,16 +114,3 @@ class NeuralNetwork:
 
 
 
-nn = NeuralNetwork()
-
-board = [
-    2, 0, 4, 0,
-    0, 8, 0, 0,
-    0, 0, 2, 0,
-    0, 0, 0, 4
-]
-
-output = nn.forward(board)
-
-print("Outputs:", output)
-print("Chosen move:", nn.predict(board))

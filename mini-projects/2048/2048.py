@@ -1,10 +1,12 @@
 import pygame
 import sys
 import random
+import ai
+import score
 
 # 1. Initialize Pygame engine
 pygame.init()
-screen = pygame.display.set_mode((400, 400))
+screen = pygame.display.set_mode((400, 450))
 pygame.display.set_caption("2048 | By Rudra Sharma")
 clock = pygame.time.Clock()
 
@@ -16,6 +18,12 @@ grid = [
     [0, 0, 0, 0]
 ]
 emptyCells = []
+
+
+nn = ai.NeuralNetwork()
+# output = nn.forward(grid)
+# print("Outputs:", output)
+# print("Chosen move:", nn.predict(grid))
 
 def goDOWN():
   for t in range(3):
@@ -85,11 +93,33 @@ def generateNumber():
      grid[randomCell[0]][randomCell[1]] = 1
 
 
+def aiMove():
+    move = nn.predict(grid)
+
+    output = nn.forward(grid)
+    print("Outputs:", output)
+
+    if move == 0:
+        goUP()
+        print("Chosen move: UP")
+    elif move == 1:
+        goDOWN()
+        print("Chosen move: DOWN")
+    elif move == 2:
+        goLEFT()
+        print("Chosen move: LEFT")
+    elif move == 3:
+        goRIGHT()
+        print("Chosen move: RIGHT")
+
+    generateNumber()
+    
+
 # 3. Grid Visual Dimensions
 CELL_SIZE = 80   # Size of each square block
 MARGIN = 10      # Gap between square blocks
 START_X = 25     # Left offset to center the grid
-START_Y = 25     # Top offset to center the grid
+START_Y = 75     # Top offset to center the grid
 
 # Load a clean text font
 FONT = pygame.font.SysFont("Arial", 36, bold=True)
@@ -105,20 +135,23 @@ while True:
         # This block triggers EXACTLY ONCE per physical key press
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-              goLEFT()
-              generateNumber()
+                goLEFT()
+                generateNumber()
 
             elif event.key == pygame.K_RIGHT:
-              goRIGHT()
-              generateNumber()
+                goRIGHT()
+                generateNumber()
 
             elif event.key == pygame.K_UP:
-              goUP()
-              generateNumber()
+                goUP()
+                generateNumber()
 
             elif event.key == pygame.K_DOWN:
-              goDOWN()
-              generateNumber()
+                goDOWN()
+                generateNumber()
+
+            elif event.key == pygame.K_SPACE:
+                aiMove()
 
 
     # 3. Render updates onto the window screen
@@ -146,6 +179,8 @@ while True:
               # Perfect alignment: Center the text inside the cell block
               text_rect = text_surface.get_rect(center=(x + CELL_SIZE/2, y + CELL_SIZE/2))
               screen.blit(text_surface, text_rect)
-    
+
+    # FONT.render(str(score.currentScore(grid)), True, (0, 0, 0))
+
     pygame.display.flip() # Refresh display
     clock.tick(60) # Lock frame rate to 60 FPS
