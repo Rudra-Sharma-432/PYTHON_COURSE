@@ -102,3 +102,22 @@ while i < n:
 
 print()
 
+
+i = 1
+output = 0
+while i <= n:
+  j = 1
+  while j <= n:
+    # if i > 0:
+    #   a = (n-i)*2 + (n-(j+1)*2) + a
+    
+    output += 1
+    
+    if i == 0:
+      output += 1
+    print(output, end=" ")
+
+    j += 1
+
+  i += 1
+  print()
