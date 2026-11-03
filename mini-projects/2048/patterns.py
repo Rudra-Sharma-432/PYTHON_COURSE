@@ -102,6 +102,8 @@ while i < n:
 
 print()
 
+# ==========================================
+# square spiral counting
 
 i = 1
 output = 0
