@@ -107,7 +107,6 @@ def aiMove():
     print("Outputs:", output)
 
     if move == 0:
-        data.addMove()
         goRIGHT()
         print("Chosen move: RIGHT")
     elif move == 1:
@@ -148,9 +147,9 @@ while True:
                 for value in row:
                     flat_grid.append(value)
 
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_RIGHT:
                 data.addMove(flat_grid, [1, 0, 0, 0])
-                goLEFT()
+                goRIGHT()
                 generateNumber()
 
             elif event.key == pygame.K_UP:
@@ -158,9 +157,9 @@ while True:
                 goUP()
                 generateNumber()
 
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_LEFT:
                 data.addMove(flat_grid, [0, 0, 1, 0])
-                goRIGHT()
+                goLEFT()
                 generateNumber()
 
             elif event.key == pygame.K_DOWN:
