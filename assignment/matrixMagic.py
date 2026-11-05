@@ -72,44 +72,72 @@
 # ==============================================
 print("="*20)
 
-def giveAntiDiagnol(M):
-  i = 0
-  j = 0
+# def giveAntiDiagnol(M):
+#   i = 0
+#   j = 0
+# 
+#   down = False
+#   
+#   while not(i == (len(M) - 1) and j == (len(M[0]) - 1)):
+# 
+#     print(i, j)
+#     print(down)
+#     print(M[i][j])
+#     print()
+# 
+#     i += 1
+#     j -= 1
+# 
+#     if (j < 0) or i >= len(M):
+#       if down:
+#         i = (i + j + 1) - len(M[0]) - 1
+#       else:
+#         i, j = i - i, j + i
+# 
+#       if down:
+#         j = len(M[0]) - 1
+#       else:
+#         j = (i + j + 1)
+# 
+# 
+#       if j == len(M[0]) - 1:
+#         down = True
+# 
+# 
+#   # print(i != (len(M) - 1) and j != (len(M[0]) - 1) , i , j, len(M), len(M[0]))
+# 
+# 
+# A = [
+#   [1, 2, 3, 0],
+#   [4, 5, 6, 1],
+#   [7, 8, 9, 2]
+# ]
+# giveAntiDiagnol(A)
 
-  down = False
-  
-  while not(i == (len(M) - 1) and j == (len(M[0]) - 1)):
-
-    print(i, j)
-    print(down)
-    print(M[i][j])
-    print()
-
-    i += 1
-    j -= 1
-
-    if (j < 0) or i >= len(M):
-      if down:
-        i = (i + j + 1) - len(M[0]) - 1
-      else:
-        i, j = i - i, j + i
-
-      if down:
-        j = len(M[0]) - 1
-      else:
-        j = (i + j + 1)
 
 
-      if j == len(M[0]) - 1:
-        down = True
+def spiral(M):
+  rows = len(M)
+  cols = len(M[0])
 
+  top = 0
+  left = 0
+  bottom = rows - 1
+  right = cols - 1
 
-  # print(i != (len(M) - 1) and j != (len(M[0]) - 1) , i , j, len(M), len(M[0]))
+  while top <= bottom and left <= right:
 
+    j = left
+    while j <= right:
+      print(M[top][j], end=" ")
+      j += 1
+
+    top += 1
 
 A = [
   [1, 2, 3, 0],
   [4, 5, 6, 1],
   [7, 8, 9, 2]
 ]
-giveAntiDiagnol(A)
+
+spiral(A)

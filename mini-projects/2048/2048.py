@@ -3,6 +3,9 @@ import sys
 import random
 import ai
 import score
+import data
+
+# print(data.get_training_data())
 
 # 1. Initialize Pygame engine
 pygame.init()
@@ -21,9 +24,9 @@ emptyCells = []
 
 
 nn = ai.NeuralNetwork()
-# output = nn.forward(grid)
-# print("Outputs:", output)
-# print("Chosen move:", nn.predict(grid))
+output = nn.forward(grid)
+print("Outputs:", output)
+print("Chosen move:", nn.predict(grid))
 
 def goDOWN():
   for t in range(3):
@@ -104,17 +107,18 @@ def aiMove():
     print("Outputs:", output)
 
     if move == 0:
+        data.addMove()
+        goRIGHT()
+        print("Chosen move: RIGHT")
+    elif move == 1:
         goUP()
         print("Chosen move: UP")
-    elif move == 1:
-        goDOWN()
-        print("Chosen move: DOWN")
     elif move == 2:
         goLEFT()
         print("Chosen move: LEFT")
     elif move == 3:
-        goRIGHT()
-        print("Chosen move: RIGHT")
+        goDOWN()
+        print("Chosen move: DOWN")
 
     generateNumber()
     
@@ -138,19 +142,29 @@ while True:
 
         # This block triggers EXACTLY ONCE per physical key press
         if event.type == pygame.KEYDOWN:
+            
+            flat_grid = []
+            for row in grid:
+                for value in row:
+                    flat_grid.append(value)
+
             if event.key == pygame.K_LEFT:
+                data.addMove(flat_grid, [1, 0, 0, 0])
                 goLEFT()
                 generateNumber()
 
-            elif event.key == pygame.K_RIGHT:
-                goRIGHT()
-                generateNumber()
-
             elif event.key == pygame.K_UP:
+                data.addMove(flat_grid, [0, 1, 0, 0])
                 goUP()
                 generateNumber()
 
+            elif event.key == pygame.K_RIGHT:
+                data.addMove(flat_grid, [0, 0, 1, 0])
+                goRIGHT()
+                generateNumber()
+
             elif event.key == pygame.K_DOWN:
+                data.addMove(flat_grid, [0, 0, 0, 1])
                 goDOWN()
                 generateNumber()
 

@@ -12,6 +12,11 @@ class NeuralNetwork:
         self.hidden2_size = 32
         self.output_size = 4
 
+        self.input = []
+        self.hidden1 = []
+        self.hidden2 = []
+        self.output = []
+
         # Weights input to hidden1
         self.weights1 = self.create_weights(self.input_size, self.hidden1_size)
 
@@ -51,7 +56,9 @@ class NeuralNetwork:
                 for value in row:
                     flat_grid.append(value)
             inputs = flat_grid
-                  
+        
+        self.input = inputs
+
         # -------------------
         # Input → Hidden 1
         # -------------------
@@ -65,6 +72,7 @@ class NeuralNetwork:
 
             hidden1.append(self.relu(total))
 
+        self.hidden1 = hidden1
 
         # -------------------
         # Hidden 1 → Hidden 2
@@ -79,6 +87,8 @@ class NeuralNetwork:
             
             hidden2.append(self.relu(total))
 
+        self.hidden2 = hidden2
+
         # -------------------
         # Hidden 2 → Output
         # -------------------
@@ -92,6 +102,7 @@ class NeuralNetwork:
 
             output.append(total)
 
+        self.output = output
         return output
 
 
@@ -107,10 +118,10 @@ class NeuralNetwork:
 
         return output.index(max(output))
 
-        # output[0] → UP
-        # output[1] → DOWN
+        # output[0] → RIGHT
+        # output[1] → UP
         # output[2] → LEFT
-        # output[3] → RIGHT
+        # output[3] → DOWN
 
 
 
