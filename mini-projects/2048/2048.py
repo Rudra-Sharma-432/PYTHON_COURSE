@@ -12,9 +12,9 @@ clock = pygame.time.Clock()
 
 # grid = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 grid = [
-    [0, 2, 0, 0],
-    [4, 0, 4, 0],
-    [0, 1, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
     [0, 0, 0, 0]
 ]
 emptyCells = []
@@ -91,6 +91,10 @@ def generateNumber():
        grid[randomCell[0]][randomCell[1]] = 2
   else:
      grid[randomCell[0]][randomCell[1]] = 1
+
+generateNumber()
+generateNumber()
+generateNumber()
 
 
 def aiMove():
