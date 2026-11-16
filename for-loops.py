@@ -69,3 +69,25 @@ def print_table(n):
         print(f"{n} x {_} = {n * _}")
     print()
 print_table(9)
+
+print('=' * 30)
+
+r  = 5
+for i in range(5):
+    print(i)
+    i = i - 1
+
+
+
+def make_dict(dict_input):
+    splited = (dict_input.split(' / '))
+    splited.pop(0)
+    output = {}
+    for val in splited:
+        key = val.split()[0]
+        value = val.split()[1]
+        output[key] = int(value)
+    return output
+
+marks_dict = make_dict(input())
+print(marks_dict)
