@@ -8,7 +8,7 @@ import game2048 as game
 import neat_ai as neat
 
 POP_SIZE = 150
-GENERATIONS = 200
+GENERATIONS = 500
 GAMES_PER_GENOME = 3          # average over several games: 2048 spawns are random
 MAX_MOVES = 3000
 SAVE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "best_genome.json")

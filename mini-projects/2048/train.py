@@ -1,5 +1,6 @@
 import math
 import random
+from collections import Counter
 
 import ai
 import data
@@ -40,10 +41,18 @@ if __name__ == "__main__":
     if len(states) < 50:
         raise SystemExit("Not enough data. Play more games first (arrow keys record moves).")
 
+    names = ["RIGHT", "UP", "LEFT", "DOWN"]
+    counts = Counter(a.index(1) for a in actions)
+    print("Move distribution:", {names[k]: v for k, v in sorted(counts.items())})
+    print(f"Majority-move baseline: {max(counts.values()) / len(actions):.1%}"
+          "  <- validation accuracy must beat this, otherwise the network learned nothing")
+
     nn = ai.NeuralNetwork()
 
-    print("\n--- Gradient check (run this once; remove later) ---")
-    gradient_check(nn, states[0], actions[0].index(1))
+    # use a mid-game board for the check: on an almost empty board most gradients are exactly 0
+    idx = max(range(len(states)), key=lambda i: sum(v != 0 for v in states[i]))
+    print("\n--- Gradient check (diff should be ~1e-7 or smaller) ---")
+    gradient_check(nn, states[idx], actions[idx].index(1))
 
     # 80/20 train/validation split
     combined = list(zip(states, actions))
