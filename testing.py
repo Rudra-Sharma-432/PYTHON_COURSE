@@ -14,24 +14,20 @@ print(f"{type(dict_a_items) = }")
 print(f"{list(dict_a_items) = } ")
 
 
-def eakFunction():
-  print("hello people")
 
-
-
-print("# 1. ==============")
-list_b = [1,2,3]
+print("\n 1. ==============")
+list_b = [1, 2, 3]
 list_b[2] = list_b.append(3)
 print(list_b)
 
 
-print("\n# 2. ==============")
+print("\n 2. ==============")
 x = 5
 res = (x == 5) in [True] == True
 print(res)
 
 
-print("\n# 3. ==============")
+print("\n 3. ==============")
 def greet(name):
   print("hello", name)
 
@@ -41,25 +37,25 @@ a("from 'a'")
 greet("from 'greet'")
 
 
-print("\n# 4. ==============")
+print("\n 4. ==============")
 nums = [1, 2, 3]
 gen = (x for x in nums if x in nums)
 nums = [3, 4, 5]
 print(list(gen))
 
 
-print("\n# 5. ==============")
+print("\n 5. ==============")
 funcs = [lambda: i for i in range(3)]
 i = 10
 print([f() for f in funcs])
 
 
-print("\n# 6. ==============")
+print("\n 6. ==============")
 d = {True: "yes", 1: "one", 1.0: "float"}
 print(d)
 
 
-print("\n# 7. ==============")
+print("\n 7. ==============")
 def tricky():
     x = [1]
     try:
@@ -69,3 +65,28 @@ def tricky():
         return x
 
 print(tricky())
+
+
+print("\n 8. ==============")
+t = ([1, 2], [3, 4])
+try:
+    t[0] += [5]
+except TypeError:
+    pass
+print(t)
+
+
+print("\n 9. ==============")
+nums = [1, 2, 3]
+
+def replace(list_a):
+    print(nums)
+    print(f"{list_a = }")
+    list_a = [7, 7, 7]
+    print(f"{list_a = }")
+    print(nums)
+    nums = list_a
+
+
+replace(nums)
+print(nums)
