@@ -81,7 +81,39 @@ nums = [1, 2, 3]
 
 def replace(list_a):
     print(f"{list_a = }")
+
     list_a = [7, 7, 7]
+    
+    print(f"{list_a = }")
+
+replace(nums)
+
+print(f"{nums = }")
+
+
+print("\n 10. =============")
+nums = [1, 2, 3]
+
+def update_first_element(list_a):
+    print(f"{list_a = }")
+
+    list_a[0] = 99
+
+    print(f"{list_a = }")
+
+update_first_element(nums)
+
+print(f"{nums = }")
+
+
+print("\n 11. =============")
+nums = [1, 2, 3]
+
+def replace(list_a):
+    print(f"{list_a = }")
+    
+    list_a = list_a + [10]
+
     print(f"{list_a = }")
 
 replace(nums)
