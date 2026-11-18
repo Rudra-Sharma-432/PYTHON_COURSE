@@ -83,7 +83,7 @@ def replace(list_a):
     print(f"{list_a = }")
 
     list_a = [7, 7, 7]
-    
+
     print(f"{list_a = }")
 
 replace(nums)
@@ -119,3 +119,14 @@ def replace(list_a):
 replace(nums)
 
 print(f"{nums = }")
+
+
+print("\n 12. =============")
+num = 4
+
+def change(number_a):
+    number_a = number_a + 10
+
+change(num)
+
+print(f"{num = }")
