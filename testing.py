@@ -80,13 +80,10 @@ print("\n 9. ==============")
 nums = [1, 2, 3]
 
 def replace(list_a):
-    print(nums)
     print(f"{list_a = }")
     list_a = [7, 7, 7]
     print(f"{list_a = }")
-    print(nums)
-    nums = list_a
-
 
 replace(nums)
-print(nums)
+
+print(f"{nums = }")
